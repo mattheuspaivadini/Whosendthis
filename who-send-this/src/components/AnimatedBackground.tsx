@@ -1,10 +1,22 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
+
+type Square = {
+  size: number;
+  left: number;
+  top: number;
+  moveDelay: number;
+  moveDuration: number;
+  colorDelay: number;
+  colorDuration: number;
+};
 
 export default function AnimatedBackground() {
-  const squares = useMemo(() => {
-    return Array.from({ length: 65 }, () => ({
+  const [squares, setSquares] = useState<Square[]>([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 65 }, () => ({
       size: Math.random() * 28 + 6,
       left: Math.random() * 120 - 10,
       top: Math.random() * 120 - 10,
@@ -13,6 +25,7 @@ export default function AnimatedBackground() {
       colorDelay: Math.random() * 5,
       colorDuration: Math.random() * 4 + 2,
     }));
+    setSquares(generated);
   }, []);
 
   return (
