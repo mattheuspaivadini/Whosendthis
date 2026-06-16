@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@keyframes move-diagonal {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(calc(100vw + 200px), calc(-100vh - 200px));
+    opacity: 0;
+  }
+}
+
+@keyframes color-swap {
+  0%, 49% { background-color: #ffffff; }
+  50%, 99% { background-color: #000000; }
+  100% { background-color: #ffffff; }
+}
